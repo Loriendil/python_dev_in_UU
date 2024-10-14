@@ -27,8 +27,12 @@ my_set = {1, 2, (3.3, 3.4, 5.5, 3.3), True, False, True, 'String', 'Another Stri
 print("Множество: ", my_set)
 # Добвляю 2 произвольных элемента в множество, которых нет.
 # добавляем один элемент, с помощью выражения: my_set.add(6), но добавим сразу 2
+# длинная и 'правильная ' версия:
+#addition_to_set= [6, 'Added String']
+#my_set.update(addition_to_set)
+#но мне нужна ещё более лакончиная версия
 addition_to_set= [6, 'Added String']
-my_set.update(addition_to_set)
+my_set |= set(addition_to_set)
 # Удаляю одно значение и вывожу изменённое множество
 my_set.discard(3)
 print("Модифицированное множество: ", my_set)
