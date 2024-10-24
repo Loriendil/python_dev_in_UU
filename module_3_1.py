@@ -9,8 +9,8 @@ def count_calls():
     global calls
     calls += 1
 
-# Опишем функцию, считающую количество символов, выводящую слово заглавными и
-# прописными буквами
+# Опишем функцию, считающую количество символов (len()), выводящую слово заглавными(upper()) и
+# прописными буквами (lower())Код: "str.upper(str1)"  PyCharm не подчёркивает как ошибку, но это ОШИБКА!!! 
 def string_info(str1):
     count_calls()
     return len(str1), str1.upper(), str1.lower()
@@ -18,10 +18,10 @@ def string_info(str1):
 # Опишем функцию, которая проверяет содержание в представленном списке слова
 def is_contains(string, list_to_search):
     count_calls()
-    string = string.lower()
+    string = string.lower() # подсказка в примечаниях в самом задании! Все в одном регистре!
     for item in list_to_search:
         if string.lower() == item.lower():
-            return True
+            return True # Дьявольское форматирование! Следите за отступами и табуляциями ... 
     return False
 
 # Тело основной "функции"
