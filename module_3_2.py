@@ -61,7 +61,7 @@ def is_valid_email(email):
     # Пользоваться или нет вопрос вкуса, я вслед за ИИ использую, хотя можно и немного удлинить текст программы
     # наверное. Ссылка на документацию: https://docs.python.org/3/library/functions.html#any
     if  any(domain.endswith(suffix) for suffix in allowed_domain):
-    # в документации сказано кстати вот так: str.endswith(suffix[, start[, end]]),
+    # в документации сказано кстати вот так: any(iterable),
     # а мы пишем вот так: any(domain.endswith(suffix) for suffix in allowed_domain) и
     # почему это работает казалось бы.
     # Цикл под капотом каждый раз формирует для any() список (ну, или любой итерируемый объект, но я тестил на списке)
