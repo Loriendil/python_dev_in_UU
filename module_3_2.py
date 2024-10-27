@@ -67,12 +67,7 @@ def is_valid_email(email):
     # Цикл под капотом каждый раз формирует для any() список (ну, или любой итерируемый объект, но я тестил на списке)
     # и подсовывает в any(), где первый элемент и единственный элемент это результат вызова функции endswith().
     # это так потому, что если выкинуть цикл, то получится вот такой код:
-    # print(domain.endswith('.com'))
-    # print(domain.endswith('.ru'))
-    # print(domain.endswith('.net'))
-    # print(any([domain.endswith('.com')]))
-    # print(any([domain.endswith('.net')]))
-    # print(any([domain.endswith('.net')]))
+    # print(any([domain.endswith('.net'), domain.endswith('.com'),domain.endswith('.net')]))
     # Это конечно всё мысли гипотетически и хорошо бы почитать про то, как работает интерпретатор на самом деле.
     # Книжки типа Рихтер "CLR via C#. Программирование на платформе Microsoft .NET Framework 4.0 на языке C#" для
     # Python я не нашёл, но я и искал на самом деле, потому что читать такие книжки нужно всё же уже понимая как
