@@ -22,16 +22,15 @@ def calculate_structure_sum(*args):
 # в кортеже и списке нет именованной части.
 # Множество также требует отдельного условия, потому что
 # в множестве может быть и кортеж, и список, а в кортеже или списке так не может быть.
-        elif isinstance(item, (list, tuple)):
+# UPD:  В списоке может быть кортеж! Это я ошибся в рассуждениях! В кортеже может быть список!
+# Я только сейчас понял! Это можно всё запихнуть в один цикл перебора по элементам коллекции!
+        elif isinstance(item, (list, tuple, set)):
             for element in item:
                 res += calculate_structure_sum(element)
 # перечисляем по паре ключ-значение и суммируем их по ходу итерации
         elif isinstance(item, dict):
             for key, value in item.items():
                 res += calculate_structure_sum(key) + calculate_structure_sum(value)
-        elif isinstance(item, set):
-            for element in item:
-                res += calculate_structure_sum(element)
     return res
 
 # Этот код напрямую взят из урока
