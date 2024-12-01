@@ -18,10 +18,10 @@ class Figure:
     # поэтому треугольник со сторонами 1, 1, 1 просто не существует.
     def __init__(self, __sides: int, __color: tuple[int, int, int], filled = True) -> None:
         self.__sides = __sides
-        self.__color = __color
+        self.__color = list(__color)
         self.filled = filled
 
-    def get_color(self) -> tuple[int, int, int]:
+    def get_color(self) -> list[int]:
         return self.__color
 
     # PyCharm предлагает использовать декораторы для указания о статическом методе, но
@@ -31,7 +31,7 @@ class Figure:
 
     def set_color(self, r: int, g: int, b: int) -> None:
         if self.__is_valid_color(r, g, b):
-            self.__color = (r, g, b)
+            self.__color = [r, g, b]
 
     # PyCharm предлагает использовать декораторы для указания о статическом методе, но
     # мы декораторы не проходили ещё, поэтому оставим это как есть
