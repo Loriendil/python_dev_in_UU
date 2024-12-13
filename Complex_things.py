@@ -57,7 +57,7 @@ def personal_sum(numbers: list | set | tuple | dict) -> tuple:
                 print(f"Некорректный тип данных для подсчёта суммы: {value}")
                 result += key
                 incorrect_data += 1
-            except KeyError and ValueError:
+            except KeyError and ValueError and TypeError:
                 print(f"Некорректный тип данных для подсчёта суммы: {key}, {value}")
                 incorrect_data += 2
 
