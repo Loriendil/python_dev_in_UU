@@ -3,7 +3,7 @@
 def personal_sum(numbers: list | set | tuple | dict) -> tuple:
     result = 0
     incorrect_data = 0
-    # поскольку у нас в задании не сказано конкретно какая разновидность коллекции, будет проверять всё на свете
+    # поскольку у нас в задании не сказано конкретно какая разновидность коллекции, будем проверять всё на свете
     # список, множество и кортеж в одну сторону, словарь отдельно
     if type(numbers) is not dict:
         for item in numbers:
@@ -15,49 +15,19 @@ def personal_sum(numbers: list | set | tuple | dict) -> tuple:
                 # из примера вывода в консоль
                 incorrect_data += 1
     else:
-        for key, value in numbers.items():
-            # Этот код я оставил здесь для того, чтобы показать как это работает на самом деле, потому что ОЧЕНЬ не очевидно.
-            # try:
-            #     result += key
-            #     try:
-            #         result += value
-            #         try:
-            #             result = result + key + value
-            #         except TypeError:
-            #             print(f"Некорректный тип данных для подсчёта суммы: {key}, {value}")
-            #             incorrect_data += 1
-            #     except TypeError:
-            #         print(f"Некорректный тип данных для подсчёта суммы: {value}")
-            #         result += key
-            #         incorrect_data += 1
-            # except TypeError:
-            #     print(f"Некорректный тип данных для подсчёта суммы: {key}")
-            #     result += value
-            #     incorrect_data += 1
-            # else:
-            #     if isinstance(key,int | float) and isinstance(value,int | float):
-            #         continue
-            #
-            # Поскольку вложенные try-except, как try-catch-catch(...), try-catch-finally в том, виде
-            # как это представлено в закомментированном виде ересь, напишем в правильном ключе.
-            # Логика такая: проверил, проверь следующее.
-            # Для правильного результата ПРЕДНАЗНАЧЕН блок else, поэтому не надо ломать язык.
-            # Нужно на нём говорить правильно. Прям как с "словить" из лекции.
-            # Может быть это удобно с какой-то точки зрения, но это ломает красоту и логику родного языка.
+        for key in numbers.keys():
             try:
-                result = result + key + value
-            except KeyError and TypeError:
-                print(f"Некорректный тип данных для подсчёта суммы: {key}")
-                if isinstance(value, int | float):
-                    result += value
-                incorrect_data += 1
-            except ValueError and TypeError:
-                print(f"Некорректный тип данных для подсчёта суммы: {value}")
                 result += key
+            except TypeError:
+                print(f"Некорректный тип данных для подсчёта суммы: {key}")
                 incorrect_data += 1
-            except KeyError and ValueError and TypeError:
-                print(f"Некорректный тип данных для подсчёта суммы: {key}, {value}")
-                incorrect_data += 2
+
+        for value in numbers.values():
+            try:
+                result += value
+            except TypeError:
+                print(f"Некорректный тип данных для подсчёта суммы: {value}")
+                incorrect_data += 1
 
     return tuple([result, incorrect_data])  # можно вернуть через запятую, но так я подчёркиваю что это именно кортеж.
 
@@ -108,3 +78,4 @@ print("-----------------Моя проверка-----------------")
 print(f"Результат 5: {calculate_average({'ключ 1': 1, 'ключ 2': 2})}") # сумма 3, среднее 1.5
 print(f"Результат 6: {calculate_average({4: 1, 3: 2})}") # сумма 10, среднее 5
 print(f"Результат 7: {calculate_average({'ключ 5': 'значение -1', 'ключ 6': 'значение -2'})}")  # None
+print(f"Результат 8: {calculate_average({'ключ 1': 1, 3: 'ключ 2'})}") # сумма 4, среднее 2
