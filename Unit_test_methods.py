@@ -3,6 +3,8 @@ import unittest
 from runner_and_tournament import Runner, Tournament
 
 class TournamentTest(unittest.TestCase):
+    is_frozen = True
+
     @classmethod
     def setUpClass(cls):
         cls.all_results = {}
@@ -19,7 +21,7 @@ class TournamentTest(unittest.TestCase):
         self.Andrey_runner = Runner("Andrey", 9)
         self.Nick_runner = Runner("Nick", 3)
 
-
+    @unittest.skipIf(is_frozen, "Tests in this case are frozen")
     def test_us_vs_uk(self):
         unreal_tournament_us_vs_uk = Tournament(90,
                                                 self.Usain_runner, self.Nick_runner)
@@ -27,6 +29,7 @@ class TournamentTest(unittest.TestCase):
         self.assertTrue(result[list(result.keys())[-1]] == "Nick", "Nick should be a last runner!")
         self.all_results['test_round_us_vs_uk'] = result
 
+    @unittest.skipIf(is_frozen, "Tests in this case are frozen")
     def test_uk_vs_rus(self):
         unreal_tournament_uk_vs_ru = Tournament(90,
                                                 self.Andrey_runner, self.Nick_runner)
@@ -34,6 +37,7 @@ class TournamentTest(unittest.TestCase):
         self.assertTrue(result[list(result.keys())[-1]] == "Nick", "Nick should be a last runner!")
         self.all_results['test_round_rus_vs_uk'] = result
 
+    @unittest.skipIf(is_frozen, "Tests in this case are frozen")
     def test_international(self):
         international_unreal_tournament =  (
                             Tournament(90,
@@ -44,6 +48,7 @@ class TournamentTest(unittest.TestCase):
         self.assertTrue(result[list(result.keys())[-1]] == "Nick", "Nick should be a last runner!")
         self.all_results['test_olympic_round'] = result
 
+    @unittest.skipIf(is_frozen, "Tests in this case are frozen")
     def test_refactoring_provided_code(self):
         # 1. Удаление объекта из списка participants может до завершения цикла до запуска метода participant.run()
         # вместо for participant in self.participants:
