@@ -30,6 +30,8 @@ def log_exceptions(*exceptions):
             logging.critical(f'{type(e).__name__} \n Возникло исключение: {e}. '
                              f'Пояснение: Неверный тип данных для объекта Runner', exc_info=True)
             raise  # Переподнимаем если это не одна из специфических исключений
+    else:
+      logging.info("test_walk выполнен успешно")
 
 class RunnerTest(unittest.TestCase):
     is_frozen = False
@@ -41,8 +43,7 @@ class RunnerTest(unittest.TestCase):
             for i in range(10):
                 first_runner.walk()
             self.assertEqual(first_runner.distance, 50)
-            logging.info("test_walk выполнен успешно")
-
+            
     @unittest.skipIf(is_frozen, "Tests in this case are frozen")
     def test_run(self):
         with log_exceptions(BaseException):
@@ -50,8 +51,6 @@ class RunnerTest(unittest.TestCase):
             for i in range(10):
                 second_runner.run()
             self.assertEqual(second_runner.distance, 100)
-            logging.info('test_run" выполнен успешно')
-
 
     @unittest.skipIf(is_frozen, "Tests in this case are frozen")
     def test_challenge(self):
