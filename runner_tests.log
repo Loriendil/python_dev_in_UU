@@ -1,0 +1,15 @@
+2025-01-28 14:32:06,540 : INFO - Начало тестирования
+2025-01-28 14:32:06,541 : WARNING - Неверный тип данных для объекта Runner: ('Имя может быть только строкой, передано list',)
+Traceback (most recent call last):
+  File "E:\local_repository\Python-repository\Homework\Module_8\tests_12_4.py", line 35, in test_run
+    second_runner = Runner(['Vlad'])
+  File "E:\local_repository\Python-repository\Homework\Module_8\rt_with_exceptions.py", line 6, in __init__
+    raise TypeError(f'Имя может быть только строкой, передано {type(name).__name__}')
+TypeError: Имя может быть только строкой, передано list
+2025-01-28 14:32:06,542 : WARNING - Неверный тип данных для объекта Runner: ('Скорость не может быть отрицательной, сейчас -5',)
+Traceback (most recent call last):
+  File "E:\local_repository\Python-repository\Homework\Module_8\tests_12_4.py", line 20, in test_walk
+    first_runner = Runner("Alex", -5)
+  File "E:\local_repository\Python-repository\Homework\Module_8\rt_with_exceptions.py", line 11, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -5
