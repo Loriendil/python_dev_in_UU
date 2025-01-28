@@ -29,7 +29,7 @@ def log_exceptions(*exceptions):
         else:
             logging.critical(f'{type(e).__name__} \n Возникло исключение: {e}. '
                              f'Пояснение: Неверный тип данных для объекта Runner', exc_info=True)
-            raise  # Re-raise if it's not one of the specified exceptions
+            raise  # Переподнимаем если это не одна из специфических исключений
 
 class RunnerTest(unittest.TestCase):
     is_frozen = False
